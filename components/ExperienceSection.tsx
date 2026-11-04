@@ -242,7 +242,7 @@ export default function ExperienceSection() {
                             letterSpacing: "-0.035em",
                           }}
                         >
-                          {exp.role}
+                          {/* {exp.role} */}
                         </Typography>
 
                         <div className="mt-1.5 flex items-center gap-2 sm:mt-2">
