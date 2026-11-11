@@ -16,7 +16,6 @@ const skillGroups = [
   {
     title: "Core Languages & Frameworks",
     description: "Languages and libraries used to build applications.",
-    icon: Code2,
     color: "#67e8f9",
     borderColor: "rgba(34, 211, 238, 0.4)",
     skills: [
@@ -27,7 +26,6 @@ const skillGroups = [
   {
     title: "ERP & Domain Knowledge",
     description: "Enterprise systems and business workflows.",
-    icon: Database,
     color: "#c4b5fd",
     borderColor: "rgba(167, 139, 250, 0.4)",
     skills: portfolioData.skills.domain,
@@ -35,7 +33,6 @@ const skillGroups = [
   {
     title: "Concepts & Architecture",
     description: "Engineering principles and application design.",
-    icon: Boxes,
     color: "#6ee7b7",
     borderColor: "rgba(52, 211, 153, 0.4)",
     skills: portfolioData.skills.concepts,
@@ -43,12 +40,13 @@ const skillGroups = [
   {
     title: "Tools & Practices",
     description: "Development tools and everyday workflows.",
-    icon: Wrench,
     color: "#fcd34d",
     borderColor: "rgba(251, 191, 36, 0.4)",
     skills: portfolioData.skills.tools,
   },
 ];
+
+const groupIcons = [Code2, Database, Boxes, Wrench];
 
 const cardStyles = {
   height: "100%",
@@ -60,18 +58,11 @@ const cardStyles = {
   overflow: "hidden",
   transition:
     "transform 300ms ease, border-color 300ms ease, box-shadow 300ms ease",
-
-  "&:hover": {
-    transform: "translateY(-5px)",
-    borderColor: "rgba(34, 211, 238, 0.4)",
-    boxShadow: "0 16px 35px rgba(6, 182, 212, 0.08)",
-  },
 };
 
 export default function SkillsSection() {
   return (
     <section id="skills" className="space-y-8">
-      {/* Section heading */}
       <div className="flex items-center gap-4">
         <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-cyan-400/20 bg-cyan-400/[0.08] text-cyan-300 transition duration-300 hover:rotate-6 hover:scale-110">
           <Layers size={24} />
@@ -92,10 +83,9 @@ export default function SkillsSection() {
         </div>
       </div>
 
-      {/* Skills cards */}
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-        {skillGroups.map((group) => {
-          const Icon = group.icon;
+        {skillGroups.map((group, index) => {
+          const Icon = groupIcons[index];
 
           return (
             <Card
@@ -103,10 +93,10 @@ export default function SkillsSection() {
               elevation={0}
               sx={{
                 ...cardStyles,
-
                 "&:hover": {
-                  ...cardStyles["&:hover"],
+                  transform: "translateY(-5px)",
                   borderColor: group.borderColor,
+                  boxShadow: "0 16px 35px rgba(6, 182, 212, 0.08)",
                 },
               }}
             >
@@ -118,7 +108,6 @@ export default function SkillsSection() {
                   },
                 }}
               >
-                {/* Card heading */}
                 <Box
                   sx={{
                     display: "flex",
@@ -171,7 +160,6 @@ export default function SkillsSection() {
                   </Box>
                 </Box>
 
-                {/* Skill chips */}
                 <Box
                   sx={{
                     display: "flex",
@@ -192,16 +180,13 @@ export default function SkillsSection() {
                         height: "30px",
                         borderRadius: "8px",
                         border: "1px solid #334155",
-                        transition:
-                          "all 200ms ease",
-
+                        transition: "all 200ms ease",
                         "&:hover": {
                           backgroundColor: `${group.color}15`,
                           borderColor: `${group.color}70`,
                           color: group.color,
                           transform: "translateY(-2px)",
                         },
-
                         "& .MuiChip-label": {
                           px: 1.25,
                         },
@@ -210,7 +195,6 @@ export default function SkillsSection() {
                   ))}
                 </Box>
 
-                {/* Footer */}
                 <Box
                   sx={{
                     mt: 3,

@@ -91,3 +91,22 @@ html {
     transition-duration: 0.01ms !important;
   }
 }
+
+
+@keyframes navbarPing {
+  75%,
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.navbar-ping {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #22d3ee;
+  animation: navbarPing 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
